@@ -4,6 +4,8 @@ using NUnit.Framework;
 
 namespace HadronLib.Tests.Patterns
 {
+    #region Classes
+
     public class TestSubject
     {
         public string Name;
@@ -31,38 +33,44 @@ namespace HadronLib.Tests.Patterns
                 subject.Name = "null";
                 subject.Surname = "null";
             });
+    }
 
-        public class FunctionalBuilder
+    #endregion
+
+    #region Tests
+
+    public class FunctionalBuilder
+    {
+        [Test]
+        public void BaseBuild()
         {
-            [Test]
-            public void BaseBuild()
-            {
-                var testSubjectBuilder = new TestSubjectBuilder();
+            var testSubjectBuilder = new TestSubjectBuilder();
 
-                string name = "Test";
-                string surname = "Subject";
+            string name = "Test";
+            string surname = "Subject";
 
-                TestSubject testSubject = testSubjectBuilder
-                    .Named(name)
-                    .Surnamed(surname)
-                    .Build();
+            TestSubject testSubject = testSubjectBuilder
+                .Named(name)
+                .Surnamed(surname)
+                .Build();
 
-                Assert.AreEqual(testSubject.Name, name);
-                Assert.AreEqual(testSubject.Surname, surname);
-            }
+            Assert.AreEqual(testSubject.Name, name);
+            Assert.AreEqual(testSubject.Surname, surname);
+        }
 
-            [Test]
-            public void ExtendedBuild()
-            {
-                var testSubjectBuilder = new TestSubjectBuilder();
+        [Test]
+        public void ExtendedBuild()
+        {
+            var testSubjectBuilder = new TestSubjectBuilder();
 
-                TestSubject testSubject = testSubjectBuilder
-                    .Null()
-                    .Build();
-                
-                Assert.AreEqual(testSubject.Name, "null");
-                Assert.AreEqual(testSubject.Surname, "null");
-            }
+            TestSubject testSubject = testSubjectBuilder
+                .Null()
+                .Build();
+            
+            Assert.AreEqual(testSubject.Name, "null");
+            Assert.AreEqual(testSubject.Surname, "null");
         }
     }
+
+    #endregion
 }

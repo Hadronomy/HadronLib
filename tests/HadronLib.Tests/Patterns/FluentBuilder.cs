@@ -5,10 +5,12 @@ using NUnit.Framework;
 
 namespace HadronLib.Tests.Patterns
 {
+    #region Classes
+
     internal class Person
     {
         public static PersonBuilder New => new PersonBuilder();
-        
+
         public string Name, Surname;
         public string Direction;
         public int Age;
@@ -27,7 +29,7 @@ Age = {Age}
     internal class Worker : Person
     {
         public new static WorkerBuilder New => new WorkerBuilder();
-        
+
         public string Workplace, Salary;
 
         public override string ToString()
@@ -43,6 +45,8 @@ Salary = {Salary}
         }
     }
 
+    internal class PersonBuilder : PersonBuilder<Person, PersonBuilder> { }
+
     internal class PersonBuilder<TSubject, TSelf> : FluentBuilder<TSubject, TSelf>
         where TSelf : PersonBuilder<TSubject, TSelf>
         where TSubject : Person
@@ -50,7 +54,7 @@ Salary = {Salary}
         public TSelf Named(string name)
         {
             Subject.Name = name;
-            return (TSelf)this;
+            return (TSelf) this;
         }
 
         public TSelf Surnamed(string surname)
@@ -72,7 +76,7 @@ Salary = {Salary}
         }
     }
 
-    internal class PersonBuilder : PersonBuilder<Person, PersonBuilder> {}
+    internal class WorkerBuilder : WorkerBuilder<Worker, WorkerBuilder> { }
 
     internal class WorkerBuilder<TSubject, TSelf> : PersonBuilder<TSubject, TSelf>
         where TSelf : WorkerBuilder<TSubject, TSelf>
@@ -90,8 +94,10 @@ Salary = {Salary}
             return (TSelf) this;
         }
     }
-    
-    internal class WorkerBuilder : WorkerBuilder<Worker, WorkerBuilder> {}
+
+    #endregion
+
+    #region Tests
 
     public class FluentBuilder
     {
@@ -154,4 +160,6 @@ Salary = {Salary}
             }
         }
     }
+
+    #endregion
 }
