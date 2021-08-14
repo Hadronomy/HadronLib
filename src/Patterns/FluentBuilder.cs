@@ -11,11 +11,12 @@ namespace HadronLib.Patterns
         {
             get => _subject;
         }
-
+        
         public TSubject Build()
         {
             return _subject;
         }
+        
         public static implicit operator TSubject(FluentBuilder<TSubject, TSelf> builder)
         {
             return builder._subject;
