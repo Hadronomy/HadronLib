@@ -5,10 +5,10 @@ using System.Linq;
 namespace HadronLib.Patterns
 {
     /// <summary>
-    /// Abstract class used to create FunctionalBuilders by inheriting from it
+    /// Implements basic Functional Builder functionality
     /// </summary>
     /// <typeparam name="TSubject">Type of what the functional builder is trying to build</typeparam>
-    /// <typeparam name="TSelf">Type of the child builder</typeparam>
+    /// <typeparam name="TSelf">Type of the inheriting class</typeparam>
     public abstract class FunctionalBuilder<TSubject, TSelf>
         where TSelf : FunctionalBuilder<TSubject, TSelf>
         where TSubject : new()
