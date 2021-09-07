@@ -8,70 +8,88 @@ using HadronLib.Patterns;
 
 namespace HadronLib.Reflection
 {
-    public class Mirror<TSubject> : Mirror<TSubject, Mirror<TSubject>>
-        where TSubject : class
+    public sealed class Mirror : IMirrorWithoutAssembly, IMirrorWithoutTypes, IMirrorWithTypes
     {
-        
-    }
-
-    public class Mirror<TSubject, TSelf> : FluentBuilder<TSubject, TSelf>
-    where TSubject : class
-    where TSelf : Mirror<TSubject, TSelf>
-    {
-        protected Assembly Assembly;
-        protected Type[] Types;
-
-        public TSelf InferAssembly()
+        private class InvalidTypeException : Exception
         {
-            Assembly = typeof(TSubject).Assembly;
-            return (TSelf)this;
-        }
-        
-        public TSelf InferAssembly(out Assembly assembly)
-        {
-            InferAssembly();
-            assembly = Assembly;
-            return (TSelf)this;
+            public InvalidTypeException(string message) : base(message) {}
         }
 
-        public TSelf AssignAssembly(Assembly assembly)
+        private Type _result;
+
+        private Type Result
+        {
+            get => _result;
+            set => _result = value;
+        }
+
+        private Lazy<List<Type>> _results = new Lazy<List<Type>>();
+
+        private List<Type> Results
+        {
+            get => _results.Value;
+            set => _results = new Lazy<List<Type>>(value);
+        }
+
+        private Assembly Assembly;
+        private Type[] Types;
+
+        public static IMirrorWithoutAssembly New => new Mirror();
+
+        public IMirrorWithoutTypes WithinAssembly(Assembly assembly)
         {
             Assembly = assembly;
-            return (TSelf)this;
+            return this;
         }
 
-        public TSelf GetTypesFromAssembly()
+        public IMirrorWithTypes GetAllAssemblyTypes()
         {
             var assemblyTypes = Assembly.GetTypes();
             Types = assemblyTypes;
-            return (TSelf)this;
+            return this;
         }
 
-        public TSelf AssignTypes(Type[] types)
+        public IMirrorWithTypes GetAllChildTypes(Type parentType)
+        {
+            var assemblyTypes = Assembly.GetTypes();
+            var enumerable = assemblyTypes.AsEnumerable();
+            var filteredEnum = enumerable.Where(type => parentType.IsAssignableFrom(type) && parentType != type);
+            Types = filteredEnum.ToArray();
+            return this;
+        }
+
+        public IMirrorWithTypes AssignTypes(Type[] types)
         {
             Types = types;
-            return (TSelf)this;
+            return this;
         }
 
-        public TSelf Find(Func<IEnumerable<Type>, Type> linqQuerry)
+        public IMirrorWithTypes Find(Func<IEnumerable<Type>, Type> linqQuerry)
         {
             var enumerableTypes = Types.AsEnumerable();
             var result = linqQuerry(enumerableTypes);
-            // TODO: Register findings into the builder
-            return (TSelf)this;
+            Result = result;
+            return this;
         }
 
-        public TSelf Filter(Func<IEnumerable<Type>, IEnumerable<Type>> linqQuerry)
+        public IMirrorWithTypes Filter(Func<IEnumerable<Type>, IEnumerable<Type>> linqQuerry)
         {
             var enumerableTypes = Types.AsEnumerable();
             var results = linqQuerry(enumerableTypes);
-            // TODO: Register findings into the builder
-            return (TSelf)this;
+            Results = results.ToList();
+            return this;
         }
-        
-        public override TSubject Build()
+
+        public Type BuildType()
         {
-            return base.Build();
+            return Result;
         }
+
+        public List<Type> BuildTypes()
+        {
+            return Results;
+        }
+
+
     }
 }
