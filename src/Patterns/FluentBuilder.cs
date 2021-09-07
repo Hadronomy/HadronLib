@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace HadronLib.Patterns
 {
@@ -18,9 +20,9 @@ namespace HadronLib.Patterns
             set => _subject = value;
         }
         
-        public virtual TSubject Build()
+        public virtual IEnumerable<TSubject> Build()
         {
-            return _subject;
+            yield return _subject;
         }
         
         public static implicit operator TSubject(FluentBuilder<TSubject, TSelf> builder)
