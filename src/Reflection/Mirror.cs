@@ -28,9 +28,9 @@ namespace HadronLib.Reflection
         private List<Type> Results
         {
             get => _results.Value;
-            set => _results = new Lazy<List<Type>>(value);
+            set => _results = new Lazy<List<Type>>(() => value);
         }
-
+        
         private Assembly Assembly;
         private Type[] Types;
 

@@ -1,7 +1,38 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <name>HadronLib</name>
+        <unityFolderName>Unity</unityFolderName>
+        <TargetFrameworks>netcoreapp3.1;netstandard2.0;net45</TargetFrameworks>
     </PropertyGroup>
+    
+    <Target Name="Clean" BeforeTargets="Build">
+        <RemoveDir Directories="$(OutDir)"/>
+        <RemoveDir Directories="$(UnityOutputPath)" 
+                   Condition="$(TargetFramework) == net45"
+        />
+    </Target>
+    
+    <!-- Copies the output files of the net45 directory into an 'unity' directory -->
+    <Target Name="UnityTarget"
+            AfterTargets="Build" 
+            Condition="$(TargetFramework) == net45"
+    >
+        <PropertyGroup>
+            <UnityOutputPath>$(BaseOutputPath)$(Configuration)\unity</UnityOutputPath>
+        </PropertyGroup>
+        <ItemGroup>
+            <BuildFiles Include="$(OutDir)\*.*"/>
+        </ItemGroup>
+        
+        <MakeDir Directories="$(UnityOutputPath)" Condition="!Exists('$(UnityOutputPath)')"/>
+        <Copy SourceFiles="@(BuildFiles)"
+              DestinationFolder="$(UnityOutputPath)"
+        />
+        
+        <Message Text="Unity compatible dll at path: '$(UnityOutputPath)'" Importance="high"/>
+    </Target>
+    
+    
 
 </Project>
