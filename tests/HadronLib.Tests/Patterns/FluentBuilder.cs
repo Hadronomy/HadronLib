@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 using HadronLib.Patterns;
 using NUnit.Framework;
@@ -148,7 +149,8 @@ Salary = {Salary}
                 .Surnamed("Surname")
                 .Paid("Salary")
                 .WorksAt("Workplace")
-                .Build();
+                .Build()
+                .First();
             
             foreach(var field in typeof(Person).GetFields())
             {
