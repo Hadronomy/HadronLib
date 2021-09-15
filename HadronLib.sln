@@ -12,15 +12,19 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Release Unity|Any CPU = Release Unity|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F6DD8C1D-6EEF-4D95-846D-2052414284C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F6DD8C1D-6EEF-4D95-846D-2052414284C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6DD8C1D-6EEF-4D95-846D-2052414284C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6DD8C1D-6EEF-4D95-846D-2052414284C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6DD8C1D-6EEF-4D95-846D-2052414284C2}.Release Unity|Any CPU.ActiveCfg = Release Unity|Any CPU
+		{F6DD8C1D-6EEF-4D95-846D-2052414284C2}.Release Unity|Any CPU.Build.0 = Release Unity|Any CPU
 		{DC8C75FB-5AB1-4609-96BE-84AD838E5091}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DC8C75FB-5AB1-4609-96BE-84AD838E5091}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC8C75FB-5AB1-4609-96BE-84AD838E5091}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC8C75FB-5AB1-4609-96BE-84AD838E5091}.Release Unity|Any CPU.ActiveCfg = Release Unity|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F6DD8C1D-6EEF-4D95-846D-2052414284C2} = {7E173981-036F-4B19-BAAE-98E4ED0BDD29}

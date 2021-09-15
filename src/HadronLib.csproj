@@ -1,38 +1,36 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <name>HadronLib</name>
-        <unityFolderName>Unity</unityFolderName>
+        <ProductName>HadronLib</ProductName>
+        <UnityFolderName>Unity</UnityFolderName>
+        <ProductVersion>0.1.0</ProductVersion>
+        <ProjectGuid>{88F0C55B-BECD-4CE5-8943-D182D9577B05}</ProjectGuid>
+        <RootNamespace>HadronLib</RootNamespace>
+        <AssemblyName>HadronLib</AssemblyName>
         <TargetFrameworks>netcoreapp3.1;netstandard2.0;net45</TargetFrameworks>
+        <Configurations>Debug;Release;Release Unity</Configurations>
+        <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
     
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release Unity' ">
+        <OutputPath>bin\Release\Unity</OutputPath>
+        <DefineConstants>TRACE;UNITY</DefineConstants>
+        <Optimize>true</Optimize>
+        <TargetFrameworks>net45;net46</TargetFrameworks>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(Configuration)' == 'Release Unity'">
+            <HintPath>C:\Unity\2020.3.6f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    
     <Target Name="Clean" BeforeTargets="Build">
-        <RemoveDir Directories="$(OutDir)"/>
-        <RemoveDir Directories="$(UnityOutputPath)" 
-                   Condition="$(TargetFramework) == net45"
-        />
+        <RemoveDir Directories="$(OutDir)" Condition="Exists($(OutDir))" />
     </Target>
     
-    <!-- Copies the output files of the net45 directory into an 'unity' directory -->
-    <Target Name="UnityTarget"
-            AfterTargets="Build" 
-            Condition="$(TargetFramework) == net45"
-    >
-        <PropertyGroup>
-            <UnityOutputPath>$(BaseOutputPath)$(Configuration)\unity</UnityOutputPath>
-        </PropertyGroup>
-        <ItemGroup>
-            <BuildFiles Include="$(OutDir)\*.*"/>
-        </ItemGroup>
-        
-        <MakeDir Directories="$(UnityOutputPath)" Condition="!Exists('$(UnityOutputPath)')"/>
-        <Copy SourceFiles="@(BuildFiles)"
-              DestinationFolder="$(UnityOutputPath)"
-        />
-        
-        <Message Text="Unity compatible dll at path: '$(UnityOutputPath)'" Importance="high"/>
+    <Target Name="UnityPostBuild" AfterTargets="Build" Condition="'$(Configuration)' == 'Release Unity'">
+        <Message Text="Unity compatible dll at path: '$(OutputPath)'" Importance="high" />
     </Target>
-    
-    
 
 </Project>
