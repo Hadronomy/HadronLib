@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
     <PropertyGroup>
         <ProductName>HadronLib</ProductName>
@@ -24,13 +24,21 @@
         <Reference Include="Microsoft.Build.Framework" />
         <Reference Include="Microsoft.Build.Tasks.v4.0" />
         <Reference Include="Microsoft.Build.Utilities.v4.0" />
-        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(Configuration)' == 'Release Unity'">
+        <!--<Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(Configuration)' == 'Release Unity'">
             <HintPath>C:\Unity\2020.3.6f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
-        </Reference>
+        </Reference>-->
     </ItemGroup>
     
-    <Target Name="CheckForUnity">
-        
+    <ItemGroup>
+      <ProjectReference Include="..\HadronLib.Tasks\HadronLib.Tasks.csproj" />
+    </ItemGroup>
+    
+    <UsingTask TaskName="IsUnityInstalledTask" AssemblyFile="bin\Release\net45\HadronLib.dll" />
+    
+    <Target Name="CheckForUnity" BeforeTargets="Build">
+        <IsUnityInstalledTask>
+            
+        </IsUnityInstalledTask>
     </Target>
     
     <Target Name="Clean" BeforeTargets="Build">
@@ -40,5 +48,4 @@
     <Target Name="UnityPostBuild" AfterTargets="Build" Condition="'$(Configuration)' == 'Release Unity'">
         <Message Text="Unity compatible dll at path: '$(OutputPath)'" Importance="high" />
     </Target>
-
 </Project>
