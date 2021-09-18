@@ -40,12 +40,27 @@ namespace HadronLib.Reflection
             return typeof(TClass).GetCustomAttributes<TAttribute>().Any();
         }
         
+        /// <summary>
+        /// Checks if the passed <paramref name="object"/> has a custom attribute of type <typeparamref name="TAttribute"/>
+        /// </summary>
+        /// <param name="object"></param>
+        /// <typeparam name="TClass"></typeparam>
+        /// <typeparam name="TAttribute"></typeparam>
+        /// <returns></returns>
         public static bool HasAttribute<TClass, TAttribute>(TClass @object)
             where TAttribute : Attribute
         {
             return @object.GetType().GetCustomAttributes<TAttribute>().Any();
         }
 
+        /// <summary>
+        /// Returns an enumeration with all the fields that have a custom attribute within the specified
+        /// <paramref name="objectType"/>
+        /// </summary>
+        /// <param name="objectType"></param>
+        /// <param name="filter"></param>
+        /// <typeparam name="TAttribute"></typeparam>
+        /// <returns></returns>
         public static IEnumerable<FieldInfo> GetFieldsWithAttribute<TAttribute>(Type objectType, Func<FieldInfo, bool> filter)
             where TAttribute : Attribute
         {
