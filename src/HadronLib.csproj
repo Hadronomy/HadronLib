@@ -25,6 +25,10 @@
         </Reference>
     </ItemGroup>
     
+    <ItemGroup>
+      <Folder Include="Math" />
+    </ItemGroup>
+    
     <Target Name="Clean" BeforeTargets="Build">
         <RemoveDir Directories="$(OutDir)" Condition="Exists($(OutDir))" />
     </Target>
