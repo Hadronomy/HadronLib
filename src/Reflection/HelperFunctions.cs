@@ -56,6 +56,14 @@ namespace HadronLib.Reflection
             return @object.GetType().GetCustomAttributes<TAttribute>().Any();
         }
 
+        /// <summary>
+        /// Returns an enumeration with all the fields that have a custom attribute within the specified
+        /// <paramref name="objectType"/>
+        /// </summary>
+        /// <param name="objectType"></param>
+        /// <param name="filter"></param>
+        /// <typeparam name="TAttribute"></typeparam>
+        /// <returns></returns>
         public static IEnumerable<FieldInfo> GetFieldsWithAttribute<TAttribute>(Type objectType, Func<FieldInfo, bool> filter)
             where TAttribute : Attribute
         {
