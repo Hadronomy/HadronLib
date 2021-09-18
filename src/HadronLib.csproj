@@ -7,10 +7,14 @@
         <ProjectGuid>{88F0C55B-BECD-4CE5-8943-D182D9577B05}</ProjectGuid>
         <RootNamespace>HadronLib</RootNamespace>
         <AssemblyName>HadronLib</AssemblyName>
-        <TargetFrameworks>netcoreapp3.1;netstandard2.0;net45</TargetFrameworks>
+        <TargetFrameworks>net45;net46</TargetFrameworks>
         <Configurations>Debug;Release;Release Unity</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\HadronLib.Tasks\HadronLib.Tasks.csproj" />
+    </ItemGroup>
     
     <PropertyGroup Condition=" '$(Configuration)' == 'Release Unity' ">
         <OutputPath>bin\Release\Unity</OutputPath>
@@ -20,6 +24,10 @@
     </PropertyGroup>
     
     <ItemGroup>
+        <Reference Include="Microsoft.Build" />
+        <Reference Include="Microsoft.Build.Framework" />
+        <Reference Include="Microsoft.Build.Tasks.v4.0" />
+        <Reference Include="Microsoft.Build.Utilities.v4.0" />
         <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(Configuration)' == 'Release Unity'">
             <HintPath>C:\Unity\2020.3.6f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
         </Reference>
@@ -28,6 +36,10 @@
     <ItemGroup>
       <Folder Include="Math" />
     </ItemGroup>
+    
+    <Target Name="CheckForUnity">
+        
+    </Target>
     
     <Target Name="Clean" BeforeTargets="Build">
         <RemoveDir Directories="$(OutDir)" Condition="Exists($(OutDir))" />

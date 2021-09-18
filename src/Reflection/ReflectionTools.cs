@@ -9,7 +9,7 @@ namespace HadronLib.Reflection
     /// <summary>
     /// Collection of reflection related helper functions
     /// </summary>
-    public static class HelperFunctions
+    public static class ReflectionTools
     {
         /// <summary>
         /// Returns all the classes that have a custom attribute of type <typeparamref name="TAttribute"/>

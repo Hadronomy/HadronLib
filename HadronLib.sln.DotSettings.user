@@ -8,5 +8,8 @@
     &lt;TestId&gt;NUnit3x::DC8C75FB-5AB1-4609-96BE-84AD838E5091::.NETCoreApp,Version=v3.1::HadronLib.Tests.Patterns.FluentBuilder.Simple&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::DC8C75FB-5AB1-4609-96BE-84AD838E5091::.NETCoreApp,Version=v3.1::HadronLib.Tests.Patterns.FluentBuilder&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::DC8C75FB-5AB1-4609-96BE-84AD838E5091::.NETCoreApp,Version=v3.1::HadronLib.Tests.Reflection.Mirror.IsResultCorrectlyTyped&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::DC8C75FB-5AB1-4609-96BE-84AD838E5091::.NETCoreApp,Version=v3.1::HadronLib.Tests.Registry.Registry.ReturnsTrueIfSoftwareInstalled&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::DC8C75FB-5AB1-4609-96BE-84AD838E5091::.NETCoreApp,Version=v3.1::HadronLib.Tests.Registry.Registry.Getting_Something_On_Generic_Search&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::DC8C75FB-5AB1-4609-96BE-84AD838E5091::.NETCoreApp,Version=v3.1::HadronLib.Tests.Registry.Registry.Returns_True_If_Software_Installed&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

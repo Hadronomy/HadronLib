@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net45;net46</TargetFrameworks>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.Build" />
+      <Reference Include="Microsoft.Build.Framework" />
+      <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    </ItemGroup>
+
+    <Import Project="$(CustomTasksDirectory)\IsUnityInstalledTask.targets" Condition="'$(CustomTasksEnabled)' != 'False'" />
+</Project>
