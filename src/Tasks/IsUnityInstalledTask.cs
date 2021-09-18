@@ -2,6 +2,7 @@ using System;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 using WinRegistry = Microsoft.Win32.Registry;
+using HadronLib.Registry;
 
 namespace HadronLib.Tasks
 {
@@ -11,6 +12,7 @@ namespace HadronLib.Tasks
         public String IsInstalled { get; set; }
         [Output]
         public String InstallationPath { get; set; }
+        
         public override bool Execute()
         {
             var isInstalled = RegistryTools.IsSoftwareInstalled("Unity", out string keyName);
@@ -20,6 +22,8 @@ namespace HadronLib.Tasks
             IsInstalled = isInstalled.ToString();
             InstallationPath = installationPath;
 
+            Console.WriteLine("HEEEEEEEEELLO");
+            
             return true;
         }
     }
