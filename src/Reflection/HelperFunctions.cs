@@ -6,6 +6,9 @@ using System.Reflection;
 
 namespace HadronLib.Reflection
 {
+    /// <summary>
+    /// Collection of reflection related helper functions
+    /// </summary>
     public static class HelperFunctions
     {
         /// <summary>
@@ -40,6 +43,13 @@ namespace HadronLib.Reflection
             return typeof(TClass).GetCustomAttributes<TAttribute>().Any();
         }
         
+        /// <summary>
+        /// Checks if the passed <paramref name="object"/> has a custom attribute of type <typeparamref name="TAttribute"/>
+        /// </summary>
+        /// <param name="object">The object from where to search</param>
+        /// <typeparam name="TClass">The type of the <paramref name="object"/></typeparam>
+        /// <typeparam name="TAttribute">The type of the attribute</typeparam>
+        /// <returns>True if the class contains the specified attribute</returns>
         public static bool HasAttribute<TClass, TAttribute>(TClass @object)
             where TAttribute : Attribute
         {
