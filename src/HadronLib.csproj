@@ -11,10 +11,6 @@
         <Configurations>Debug;Release;Release Unity</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\HadronLib.Tasks\HadronLib.Tasks.csproj" />
-    </ItemGroup>
     
     <PropertyGroup Condition=" '$(Configuration)' == 'Release Unity' ">
         <OutputPath>bin\Release\Unity</OutputPath>
@@ -31,10 +27,6 @@
         <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(Configuration)' == 'Release Unity'">
             <HintPath>C:\Unity\2020.3.6f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
         </Reference>
-    </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="Math" />
     </ItemGroup>
     
     <Target Name="CheckForUnity">
