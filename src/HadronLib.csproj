@@ -35,11 +35,13 @@
     
     <UsingTask TaskName="IsUnityInstalledTask" AssemblyFile="bin\Release\net45\HadronLib.dll" />
     
+    <!--
     <Target Name="CheckForUnity" BeforeTargets="Build">
         <IsUnityInstalledTask>
             
         </IsUnityInstalledTask>
     </Target>
+    -->
     
     <Target Name="Clean" BeforeTargets="Build">
         <RemoveDir Directories="$(OutDir)" Condition="Exists($(OutDir))" />
