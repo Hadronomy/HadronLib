@@ -43,7 +43,7 @@
                     PropertyName="UnityRegistryKeyName"/>
             
         </IsUnityInstalledTask>
-        <Message Text="IsUnityInstalled: '$(IsUnityInstalled)'" Importance="high"/>
+        <Message Text="Result of unity registry check - Unity is Installed: $(IsUnityInstalled)" Importance="high"/>
     </Target>
     
     <Target Name="Clean" BeforeTargets="Build">
