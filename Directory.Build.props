@@ -4,4 +4,11 @@
         <Authors>Pablo Hernandez (Hadronomy)</Authors>
         <Company>$(Authors)</Company>
     </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)' == 'Tasks'">
+        <DefineConstants>TRACE;TASKS</DefineConstants>
+    </PropertyGroup>
+    
+    <UsingTask TaskName="IsUnityInstalledTask" AssemblyFile="HadronLib.Tasks\bin\net472\HadronLib.Tasks.dll" />
+    
 </Project>

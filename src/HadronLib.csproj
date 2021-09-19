@@ -3,12 +3,11 @@
     <PropertyGroup>
         <ProductName>HadronLib</ProductName>
         <UnityFolderName>Unity</UnityFolderName>
-        <ProductVersion>0.1.0</ProductVersion>
         <ProjectGuid>{88F0C55B-BECD-4CE5-8943-D182D9577B05}</ProjectGuid>
         <RootNamespace>HadronLib</RootNamespace>
         <AssemblyName>HadronLib</AssemblyName>
         <TargetFrameworks>net45;net46</TargetFrameworks>
-        <Configurations>Debug;Release;Release Unity</Configurations>
+        <Configurations>Debug;Release;Release Unity;Tasks</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
     
@@ -16,32 +15,36 @@
         <OutputPath>bin\Release\Unity</OutputPath>
         <DefineConstants>TRACE;UNITY</DefineConstants>
         <Optimize>true</Optimize>
-        <TargetFrameworks>net45;net46</TargetFrameworks>
     </PropertyGroup>
     
-    <ItemGroup>
-        <Reference Include="Microsoft.Build" />
-        <Reference Include="Microsoft.Build.Framework" />
-        <Reference Include="Microsoft.Build.Tasks.v4.0" />
-        <Reference Include="Microsoft.Build.Utilities.v4.0" />
-        <!--<Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(Configuration)' == 'Release Unity'">
-            <HintPath>C:\Unity\2020.3.6f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
-        </Reference>-->
-    </ItemGroup>
-    
-    <ItemGroup>
-      <ProjectReference Include="..\HadronLib.Tasks\HadronLib.Tasks.csproj" />
-    </ItemGroup>
-    
-    <UsingTask TaskName="IsUnityInstalledTask" AssemblyFile="bin\Release\net45\HadronLib.dll" />
-    
     <!--
-    <Target Name="CheckForUnity" BeforeTargets="Build">
+    <PropertyGroup Condition="'$(Configuration)' == 'Tasks'">
+        <OutputPath>bin\Tasks</OutputPath>
+        <DefineConstants>TRACE;TASKS</DefineConstants>
+        <Optimize>true</Optimize>
+    </PropertyGroup>
+    -->
+    
+    <ItemGroup>
+        <!--
+        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(Configuration)' == 'Release Unity'">
+            <HintPath>C:\Unity\2020.3.6f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
+        </Reference>
+        -->
+    </ItemGroup>
+    
+    <Target Name="CheckForUnity" BeforeTargets="BeforeBuild" Condition="'$(Configuration)' != 'Tasks'">
         <IsUnityInstalledTask>
             
+            <Output TaskParameter="IsInstalled"
+                    PropertyName="IsUnityInstalled"/>
+            
+            <Output TaskParameter="RegistryKeyName"
+                    PropertyName="UnityRegistryKeyName"/>
+            
         </IsUnityInstalledTask>
+        <Message Text="IsUnityInstalled: '$(IsUnityInstalled)'" Importance="high"/>
     </Target>
-    -->
     
     <Target Name="Clean" BeforeTargets="Build">
         <RemoveDir Directories="$(OutDir)" Condition="Exists($(OutDir))" />

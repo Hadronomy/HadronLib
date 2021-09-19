@@ -5,7 +5,7 @@
 
         <IsPackable>false</IsPackable>
 
-        <Configurations>Debug;Release;Release Unity</Configurations>
+        <Configurations>Debug;Release;Release Unity;Tasks</Configurations>
 
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
