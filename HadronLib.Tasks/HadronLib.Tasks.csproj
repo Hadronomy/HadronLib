@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <ProductName>HadronLib.Tasks</ProductName>
+        <AssemblyName>HadronLib.Tasks</AssemblyName>
+        <TargetFramework>net472</TargetFramework>
+        <OutputPath>bin</OutputPath>
+        <Optimize>true</Optimize>
+        <RootNamespace>HadronLib.Tasks</RootNamespace>
+        <Configurations>Debug;Release;Tasks</Configurations>
+        <Platforms>AnyCPU</Platforms>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Build.Framework" Version="16.11.0" />
+      <PackageReference Include="Microsoft.Build.Tasks.Core" Version="16.11.0" />
+      <PackageReference Include="Microsoft.Build.Utilities.Core" Version="16.11.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\src\HadronLib.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -8,11 +8,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HadronLib", "src\HadronLib.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HadronLib.Tests", "tests\HadronLib.Tests\HadronLib.Tests.csproj", "{DC8C75FB-5AB1-4609-96BE-84AD838E5091}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HadronLib.Tasks", "HadronLib.Tasks\HadronLib.Tasks.csproj", "{6F30992D-4DFC-4D33-B518-8981AD54D39D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 		Release Unity|Any CPU = Release Unity|Any CPU
+		Tasks|Any CPU = Tasks|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{F6DD8C1D-6EEF-4D95-846D-2052414284C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -21,13 +24,24 @@ Global
 		{F6DD8C1D-6EEF-4D95-846D-2052414284C2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F6DD8C1D-6EEF-4D95-846D-2052414284C2}.Release Unity|Any CPU.ActiveCfg = Release Unity|Any CPU
 		{F6DD8C1D-6EEF-4D95-846D-2052414284C2}.Release Unity|Any CPU.Build.0 = Release Unity|Any CPU
+		{F6DD8C1D-6EEF-4D95-846D-2052414284C2}.Tasks|Any CPU.ActiveCfg = Tasks|Any CPU
+		{F6DD8C1D-6EEF-4D95-846D-2052414284C2}.Tasks|Any CPU.Build.0 = Tasks|Any CPU
 		{DC8C75FB-5AB1-4609-96BE-84AD838E5091}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DC8C75FB-5AB1-4609-96BE-84AD838E5091}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC8C75FB-5AB1-4609-96BE-84AD838E5091}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC8C75FB-5AB1-4609-96BE-84AD838E5091}.Release Unity|Any CPU.ActiveCfg = Release Unity|Any CPU
+		{DC8C75FB-5AB1-4609-96BE-84AD838E5091}.Tasks|Any CPU.ActiveCfg = Tasks|Any CPU
+		{DC8C75FB-5AB1-4609-96BE-84AD838E5091}.Release Unity|Any CPU.Build.0 = Release Unity|Any CPU
+		{DC8C75FB-5AB1-4609-96BE-84AD838E5091}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F30992D-4DFC-4D33-B518-8981AD54D39D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F30992D-4DFC-4D33-B518-8981AD54D39D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F30992D-4DFC-4D33-B518-8981AD54D39D}.Release Unity|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F30992D-4DFC-4D33-B518-8981AD54D39D}.Tasks|Any CPU.ActiveCfg = Tasks|Any CPU
+		{6F30992D-4DFC-4D33-B518-8981AD54D39D}.Tasks|Any CPU.Build.0 = Tasks|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F6DD8C1D-6EEF-4D95-846D-2052414284C2} = {7E173981-036F-4B19-BAAE-98E4ED0BDD29}
 		{DC8C75FB-5AB1-4609-96BE-84AD838E5091} = {9C9AF04A-2281-40F5-9B1B-4F296348CCE0}
+		{6F30992D-4DFC-4D33-B518-8981AD54D39D} = {7E173981-036F-4B19-BAAE-98E4ED0BDD29}
 	EndGlobalSection
 EndGlobal

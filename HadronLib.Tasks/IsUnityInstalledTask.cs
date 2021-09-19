@@ -11,19 +11,16 @@ namespace HadronLib.Tasks
         [Output]
         public String IsInstalled { get; set; }
         [Output]
-        public String InstallationPath { get; set; }
+        public String RegistryKeyName { get; set; }
+        
         
         public override bool Execute()
         {
-            var isInstalled = RegistryTools.IsSoftwareInstalled("Unity", out string keyName);
-            var installationPath = WinRegistry.LocalMachine.OpenSubKey(keyName).GetValue("InstallLocation") as string ??
-                                   "";
-            
-            IsInstalled = isInstalled.ToString();
-            InstallationPath = installationPath;
+            var isInstalled = RegistryTools.IsSoftwareInstalled("Unity 2020", out string keyName);
 
-            Console.WriteLine("HEEEEEEEEELLO");
-            
+            IsInstalled = isInstalled.ToString();
+            RegistryKeyName = keyName ?? "";
+
             return true;
         }
     }
