@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using HadronLib.Patterns;
-using NUnit.Framework;
+using Xunit;
 
 namespace HadronLib.Tests.Patterns
 {
@@ -102,8 +102,8 @@ Salary = {Salary}
 
     public class FluentBuilder
     {
-        [Test]
-        public void SimpleBuild()
+        [Fact]
+        public void Builds_Class_As_Expected()
         {
             Person personSchema = new Person()
             {
@@ -124,13 +124,12 @@ Salary = {Salary}
                 var schemaValue = field.GetValue(personSchema);
                 var actualValue = field.GetValue(newPerson);
 
-                Assert.AreEqual(schemaValue, actualValue);
-                
+                Assert.Equal(schemaValue, actualValue);
             }
         }
 
-        [Test]
-        public void InheritedBuild()
+        [Fact]
+        public void Inherited_Builder_Builds_As_Expected()
         {
             Worker workerSchema = new Worker()
             {
@@ -157,7 +156,7 @@ Salary = {Salary}
                 var schemaValue = field.GetValue(workerSchema);
                 var actualValue = field.GetValue(newWorker);
 
-                Assert.AreEqual(schemaValue, actualValue);
+                Assert.Equal(schemaValue, actualValue);
                 
             }
         }

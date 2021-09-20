@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using HadronLib.Patterns;
-using NUnit.Framework;
+using Xunit;
 
 namespace HadronLib.Tests.Patterns
 {
@@ -41,8 +41,8 @@ namespace HadronLib.Tests.Patterns
 
     public class FunctionalBuilder
     {
-        [Test]
-        public void BaseBuild()
+        [Fact]
+        public void Default_Builds_As_Expected()
         {
             var testSubjectBuilder = new TestSubjectBuilder();
 
@@ -54,12 +54,12 @@ namespace HadronLib.Tests.Patterns
                 .Surnamed(surname)
                 .Build();
 
-            Assert.AreEqual(testSubject.Name, name);
-            Assert.AreEqual(testSubject.Surname, surname);
+            Assert.Equal(testSubject.Name, name);
+            Assert.Equal(testSubject.Surname, surname);
         }
 
-        [Test]
-        public void ExtendedBuild()
+        [Fact]
+        public void Extended_Builds_As_Expected()
         {
             var testSubjectBuilder = new TestSubjectBuilder();
 
@@ -67,8 +67,8 @@ namespace HadronLib.Tests.Patterns
                 .Null()
                 .Build();
             
-            Assert.AreEqual(testSubject.Name, "null");
-            Assert.AreEqual(testSubject.Surname, "null");
+            Assert.Equal("null", testSubject.Name);
+            Assert.Equal("null", testSubject.Surname);
         }
     }
 

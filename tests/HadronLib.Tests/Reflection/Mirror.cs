@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using HadronLib.Reflection;
-using NUnit.Framework;
+using Xunit;
 
 namespace HadronLib.Tests.Reflection
 {
@@ -32,8 +32,8 @@ namespace HadronLib.Tests.Reflection
     
     public class Mirror
     {
-        [Test]
-        public void IsResultCorrectlyTyped()
+        [Fact]
+        public void Result_Is_Correctly_Typed()
         {
             var result =
                 HadronLib.Reflection.Mirror.New
@@ -42,7 +42,7 @@ namespace HadronLib.Tests.Reflection
                     .Find(types => types.First(type => type.Name == "Kitchen"))
                     .BuildType();
 
-            Assert.AreEqual(typeof(Kitchen), result);
+            Assert.Equal(typeof(Kitchen), result);
         }
     }
 }
