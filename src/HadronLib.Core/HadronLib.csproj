@@ -31,19 +31,6 @@
         </Reference>
     </ItemGroup>
     
-    <ItemGroup>
-      <Content Include="HadronLib.Core\.idea\.idea.HadronLib\.idea\.gitignore" />
-      <Content Include="HadronLib.Core\.idea\.idea.HadronLib\.idea\.name" />
-      <Content Include="HadronLib.Core\.idea\.idea.HadronLib\.idea\encodings.xml" />
-      <Content Include="HadronLib.Core\.idea\.idea.HadronLib\.idea\indexLayout.xml" />
-      <Content Include="HadronLib.Core\.idea\.idea.HadronLib\.idea\vcs.xml" />
-    </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="HadronLib.Core\bin\Debug\net45" />
-      <Folder Include="HadronLib.Core\bin\Debug\net46" />
-    </ItemGroup>
-    
     <Target Name="CheckForUnity" BeforeTargets="BeforeBuild" Condition="'$(Configuration)' != 'Tasks'">
         <IsUnityInstalledTask>
             
