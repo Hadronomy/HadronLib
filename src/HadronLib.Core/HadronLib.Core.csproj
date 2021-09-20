@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <ProductName>HadronLib</ProductName>
+        <PackageId>HadronLib.Core</PackageId>
         <UnityFolderName>Unity</UnityFolderName>
         <ProjectGuid>{88F0C55B-BECD-4CE5-8943-D182D9577B05}</ProjectGuid>
         <RootNamespace>HadronLib</RootNamespace>
@@ -12,18 +13,21 @@
     </PropertyGroup>
     
     <PropertyGroup Condition=" '$(Configuration)' == 'Release Unity' ">
-        <OutputPath>bin\Release\Unity</OutputPath>
+        <OutputPath>bin\Unity</OutputPath>
+        <TargetFrameworks>net45;net46</TargetFrameworks>
         <DefineConstants>TRACE;UNITY</DefineConstants>
         <Optimize>true</Optimize>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.5'">NET_45</DefineConstants>
+        <DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.6'">NET_46</DefineConstants>
     </PropertyGroup>
     
-    <!--
-    <PropertyGroup Condition="'$(Configuration)' == 'Tasks'">
-        <OutputPath>bin\Tasks</OutputPath>
-        <DefineConstants>TRACE;TASKS</DefineConstants>
-        <Optimize>true</Optimize>
-    </PropertyGroup>
-    -->
+    <ItemGroup Condition="Exists('build')">
+        <None Include="build\**\*.*" Pack="True" PackagePath="build" />
+    </ItemGroup>
     
     <ItemGroup>
         <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(Configuration)|$(IsUnityInstalled)' == 'Release Unity|true'">
@@ -31,19 +35,18 @@
         </Reference>
     </ItemGroup>
     
+    <ItemGroup>
+      <Folder Include="build" />
+    </ItemGroup>
+    
     <Target Name="CheckForUnity" BeforeTargets="BeforeBuild" Condition="'$(Configuration)' != 'Tasks'">
         <IsUnityInstalledTask>
             
             <Output TaskParameter="IsInstalled" PropertyName="IsUnityInstalled" />
-            
             <Output TaskParameter="RegistryKeyName" PropertyName="UnityRegistryKeyName" />
             
         </IsUnityInstalledTask>
-        <Message Text="Result of unity registry check - Unity is Installed: $(IsUnityInstalled)" Importance="high" />
-    </Target>
-    
-    <Target Name="Clean" BeforeTargets="Build">
-        <RemoveDir Directories="$(OutDir)" Condition="Exists($(OutDir))" />
+        <Message Text="---&gt; Result of unity registry check - Unity is Installed: $(IsUnityInstalled)" Importance="high" />
     </Target>
     
     <Target Name="UnityPostBuild" AfterTargets="Build" Condition="'$(Configuration)' == 'Release Unity'">

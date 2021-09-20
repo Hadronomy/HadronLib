@@ -3,6 +3,7 @@
         <Version>1.0.0</Version>
         <Authors>Pablo Hernandez (Hadronomy)</Authors>
         <Company>$(Authors)</Company>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <CustomTasksFramework>net472</CustomTasksFramework>
         <CustomTasksAssembly>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)\src\HadronLib.Tasks\bin\$(CustomTasksFramework)\HadronLib.Tasks.dll'))</CustomTasksAssembly>
     </PropertyGroup>
