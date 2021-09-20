@@ -11,6 +11,10 @@
     <PropertyGroup Condition="'$(Configuration)' == 'Tasks'">
         <DefineConstants>TRACE;TASKS</DefineConstants>
     </PropertyGroup>
+
+    <PropertyGroup Condition=" ('$(Configuration)' != 'Debug') And ('$(Configuration)' != 'Tasks')">
+        <OutputPath>bin\$(Configuration)\v$(Version)</OutputPath>
+    </PropertyGroup>
     
     <UsingTask TaskName="IsUnityInstalledTask" AssemblyFile="$(CustomTasksAssembly)" />
     
