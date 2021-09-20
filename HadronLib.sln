@@ -4,11 +4,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7E173981-036
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9C9AF04A-2281-40F5-9B1B-4F296348CCE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HadronLib", "src\HadronLib.csproj", "{F6DD8C1D-6EEF-4D95-846D-2052414284C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HadronLib", "src\HadronLib.Core\HadronLib.csproj", "{F6DD8C1D-6EEF-4D95-846D-2052414284C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HadronLib.Tests", "tests\HadronLib.Tests\HadronLib.Tests.csproj", "{DC8C75FB-5AB1-4609-96BE-84AD838E5091}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HadronLib.Tasks", "HadronLib.Tasks\HadronLib.Tasks.csproj", "{6F30992D-4DFC-4D33-B518-8981AD54D39D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HadronLib.Tasks", "src\HadronLib.Tasks\HadronLib.Tasks.csproj", "{6F30992D-4DFC-4D33-B518-8981AD54D39D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
