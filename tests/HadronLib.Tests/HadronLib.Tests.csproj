@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\HadronLib.Core\HadronLib.csproj" />
+      <ProjectReference Include="..\..\src\HadronLib.Core\HadronLib.Core.csproj" />
     </ItemGroup>
 
 </Project>

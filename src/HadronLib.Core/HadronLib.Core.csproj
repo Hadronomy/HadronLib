@@ -5,10 +5,10 @@
         <UnityFolderName>Unity</UnityFolderName>
         <ProjectGuid>{88F0C55B-BECD-4CE5-8943-D182D9577B05}</ProjectGuid>
         <RootNamespace>HadronLib</RootNamespace>
-        <AssemblyName>HadronLib</AssemblyName>
         <TargetFrameworks>net45;net46</TargetFrameworks>
         <Configurations>Debug;Release;Release Unity;Tasks</Configurations>
         <Platforms>AnyCPU</Platforms>
+        <PackageId>HadronLib.Core</PackageId>
     </PropertyGroup>
     
     <PropertyGroup Condition=" '$(Configuration)' == 'Release Unity' ">
