@@ -2,8 +2,11 @@
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=C_003A_005CUnity_005C2019_002E4_002E21f1_005CEditor_005CData_005CManaged_005CUnityEngine_002Edll/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=C_003A_005CUsers_005Cpablo_005CDownloads_005CNUnit_002E3_002E13_002E2_002Enupkg/@EntryIndexedValue">True</s:Boolean>
 	
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3a33e201_002D4fe7_002D43a1_002D99ba_002D071245d6d5c3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="BaseBuild" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=3a33e201_002D4fe7_002D43a1_002D99ba_002D071245d6d5c3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="HadronLib.Tests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::DC8C75FB-5AB1-4609-96BE-84AD838E5091::.NETFramework,Version=v4.7.2::HadronLib.Tests.Patterns.FluentBuilder&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DC8C75FB-5AB1-4609-96BE-84AD838E5091::.NETFramework,Version=v4.7.2::HadronLib.Tests.Patterns.FluentBuilder.Builds_Class_As_Expected&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DC8C75FB-5AB1-4609-96BE-84AD838E5091::.NETFramework,Version=v4.7.2::HadronLib.Tests.Patterns.FluentBuilder.Inherited_Builder_Builds_As_Expected&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DC8C75FB-5AB1-4609-96BE-84AD838E5091::.NETFramework,Version=v4.7.2::HadronLib.Tests.Reflection.Mirror&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::DC8C75FB-5AB1-4609-96BE-84AD838E5091::.NETFramework,Version=v4.7.2::HadronLib.Tests.Registry.Registry&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
