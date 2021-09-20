@@ -26,24 +26,33 @@
     -->
     
     <ItemGroup>
-        <!--
-        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(Configuration)' == 'Release Unity'">
+        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(Configuration)|$(IsUnityInstalled)' == 'Release Unity|true'">
             <HintPath>C:\Unity\2020.3.6f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
         </Reference>
-        -->
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Content Include="HadronLib.Core\.idea\.idea.HadronLib\.idea\.gitignore" />
+      <Content Include="HadronLib.Core\.idea\.idea.HadronLib\.idea\.name" />
+      <Content Include="HadronLib.Core\.idea\.idea.HadronLib\.idea\encodings.xml" />
+      <Content Include="HadronLib.Core\.idea\.idea.HadronLib\.idea\indexLayout.xml" />
+      <Content Include="HadronLib.Core\.idea\.idea.HadronLib\.idea\vcs.xml" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="HadronLib.Core\bin\Debug\net45" />
+      <Folder Include="HadronLib.Core\bin\Debug\net46" />
     </ItemGroup>
     
     <Target Name="CheckForUnity" BeforeTargets="BeforeBuild" Condition="'$(Configuration)' != 'Tasks'">
         <IsUnityInstalledTask>
             
-            <Output TaskParameter="IsInstalled"
-                    PropertyName="IsUnityInstalled"/>
+            <Output TaskParameter="IsInstalled" PropertyName="IsUnityInstalled" />
             
-            <Output TaskParameter="RegistryKeyName"
-                    PropertyName="UnityRegistryKeyName"/>
+            <Output TaskParameter="RegistryKeyName" PropertyName="UnityRegistryKeyName" />
             
         </IsUnityInstalledTask>
-        <Message Text="Result of unity registry check - Unity is Installed: $(IsUnityInstalled)" Importance="high"/>
+        <Message Text="Result of unity registry check - Unity is Installed: $(IsUnityInstalled)" Importance="high" />
     </Target>
     
     <Target Name="Clean" BeforeTargets="Build">
