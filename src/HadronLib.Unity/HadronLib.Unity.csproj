@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net46;net47</TargetFrameworks>
+        <Configurations>Release;Debug;Tasks</Configurations>
+        <DefineConstants>DEBUG;UNITY</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\HadronLib.Core\HadronLib.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(IsUnityInstalled)' == 'true'">
+            <HintPath>C:\Unity\2020.3.6f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    
+    <Target Name="CheckForUnity" BeforeTargets="BeforeBuild" Condition="'$(Configuration)' != 'Tasks'">
+        <IsUnityInstalledTask>
+
+            <Output TaskParameter="IsInstalled" PropertyName="IsUnityInstalled" />
+            <Output TaskParameter="RegistryKeyName" PropertyName="UnityRegistryKeyName" />
+
+        </IsUnityInstalledTask>
+        <Message Text="---&gt; Result of unity registry check - Unity is Installed: $(IsUnityInstalled)" Importance="high" />
+    </Target>
+
+    <Target Name="UnityPostBuild" AfterTargets="Build">
+        <Message Text="Unity compatible dll at path: '$(OutputPath)'" Importance="high" />
+    </Target>
+    
+</Project>

@@ -7,22 +7,14 @@
         <ProjectGuid>{88F0C55B-BECD-4CE5-8943-D182D9577B05}</ProjectGuid>
         <RootNamespace>HadronLib</RootNamespace>
         <TargetFrameworks>net45;net46</TargetFrameworks>
-        <Configurations>Debug;Release;Release Unity;Tasks</Configurations>
+        <Configurations>Debug;Release;Tasks</Configurations>
         <Platforms>AnyCPU</Platforms>
         <PackageId>HadronLib.Core</PackageId>
     </PropertyGroup>
-    
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release Unity' ">
-        <OutputPath>bin\Unity</OutputPath>
-        <TargetFrameworks>net45;net46</TargetFrameworks>
-        <DefineConstants>TRACE;UNITY</DefineConstants>
-        <Optimize>true</Optimize>
-        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    </PropertyGroup>
 
     <PropertyGroup>
-        <DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.5'">NET_45</DefineConstants>
-        <DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.6'">NET_46</DefineConstants>
+        <DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.5'">$(DefineConstants);NET_45</DefineConstants>
+        <DefineConstants Condition="'$(TargetFrameworkVersion)' == 'v4.6'">$(DefineConstants);NET_46</DefineConstants>
     </PropertyGroup>
     
     <ItemGroup Condition="Exists('build')">
@@ -30,26 +22,7 @@
     </ItemGroup>
     
     <ItemGroup>
-        <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Condition="'$(Configuration)|$(IsUnityInstalled)' == 'Release Unity|true'">
-            <HintPath>C:\Unity\2020.3.6f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
-        </Reference>
-    </ItemGroup>
-    
-    <ItemGroup>
       <Folder Include="build" />
     </ItemGroup>
     
-    <Target Name="CheckForUnity" BeforeTargets="BeforeBuild" Condition="'$(Configuration)' != 'Tasks'">
-        <IsUnityInstalledTask>
-            
-            <Output TaskParameter="IsInstalled" PropertyName="IsUnityInstalled" />
-            <Output TaskParameter="RegistryKeyName" PropertyName="UnityRegistryKeyName" />
-            
-        </IsUnityInstalledTask>
-        <Message Text="---&gt; Result of unity registry check - Unity is Installed: $(IsUnityInstalled)" Importance="high" />
-    </Target>
-    
-    <Target Name="UnityPostBuild" AfterTargets="Build" Condition="'$(Configuration)' == 'Release Unity'">
-        <Message Text="Unity compatible dll at path: '$(OutputPath)'" Importance="high" />
-    </Target>
 </Project>

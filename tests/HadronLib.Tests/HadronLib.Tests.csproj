@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net472</TargetFramework>
         <IsPackable>false</IsPackable>
-        <Configurations>Debug;Release;Release Unity;Tasks</Configurations>
+        <Configurations>Debug;Release;Tasks</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 
