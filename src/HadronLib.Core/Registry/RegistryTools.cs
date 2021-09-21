@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Microsoft.Win32;
 using WinRegistry = Microsoft.Win32.Registry;
 
@@ -12,9 +13,8 @@ namespace HadronLib.Registry
     /// </summary>
     public static class RegistryTools
     {
-        public static bool IsSoftwareInstalled(string softwareName, out string s_KeyName)
+        public static bool IsSoftwareInRegistry(Func<string, bool> matchFunction, out string s_KeyName, out string displayName)
         {
-            string displayName;
 
             string registryKeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
             RegistryKey key = WinRegistry.LocalMachine.OpenSubKey(registryKeyPath);
@@ -24,7 +24,7 @@ namespace HadronLib.Registry
                 foreach (var subKey in key.GetSubKeyNames().Select(keyName => key.OpenSubKey(keyName)))
                 {
                     displayName = subKey.GetValue("DisplayName") as string;
-                    if (displayName != null && displayName.ToLower().Contains(softwareName.ToLower()))
+                    if (displayName != null && matchFunction(displayName))
                     {
                         s_KeyName = subKey.ToString();
                         return true;
@@ -40,7 +40,7 @@ namespace HadronLib.Registry
                 foreach (var subKey in key.GetSubKeyNames().Select(keyName => key.OpenSubKey(keyName)))
                 {
                     displayName = subKey.GetValue("DisplayName") as string;
-                    if (displayName != null && displayName.ToLower().Contains(softwareName.ToLower()))
+                    if (displayName != null && matchFunction(displayName))
                     {
                         s_KeyName = subKey.ToString();
                         return true;
@@ -49,7 +49,25 @@ namespace HadronLib.Registry
             }
 
             s_KeyName = null;
+            displayName = null;
             return false;
+        }
+        
+        public static bool IsSoftwareInRegistry(string softwareName, out string s_KeyName, out string displayName)
+        {
+            return IsSoftwareInRegistry(
+                (registryName) => registryName.ToLower().Contains(softwareName),
+                out s_KeyName,
+                out displayName
+            );
+        }
+        
+        public static bool IsSoftwareInRegistry(Regex regex, out string s_KeyName, out string displayName)
+        {
+            return IsSoftwareInRegistry(
+                (registryName) => regex.Match(registryName).Success,
+                out s_KeyName,
+                out displayName);
         }
 
         public static IEnumerable<KeyValuePair<string, string>> GetSoftwareRegistryPaths(string searchQuerry)
