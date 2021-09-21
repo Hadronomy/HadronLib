@@ -21,9 +21,15 @@
 
             <Output TaskParameter="IsInstalled" PropertyName="IsUnityInstalled" />
             <Output TaskParameter="RegistryKeyName" PropertyName="UnityRegistryKeyName" />
+            <Output TaskParameter="RegistryDisplayName" PropertyName="UnityRegistryDisplayName" />
 
         </IsUnityInstalledTask>
         <Message Text="---&gt; Result of unity registry check - Unity is Installed: $(IsUnityInstalled)" Importance="high" />
+        <Message Text="
+        | Registry Found At RegistryPath: $(UnityRegistryKeyName)
+        | With display name: $(UnityRegistryDisplayName)" 
+                 Importance="high" 
+                 Condition="'$(IsUnityInstalled)' == 'true'" />
     </Target>
 
     <Target Name="UnityPostBuild" AfterTargets="Build">
