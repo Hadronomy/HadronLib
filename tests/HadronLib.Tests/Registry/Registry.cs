@@ -10,10 +10,10 @@ namespace HadronLib.Tests.Registry
         [Fact]
         public static void Returns_True_If_Software_Installed()
         {
-            var isUnityInstalled = RegistryTools.IsSoftwareInRegistry("Microsoft", out var keyName, out var displayName);
+            var isUnityInstalled = RegistryTools.IsSoftwareInRegistry("Unity", out var keyName, out var displayName);
             Console.WriteLine($"The key name of the software is: {keyName}");
-            
-            Assert.True(isUnityInstalled);
+
+            Assert.False(isUnityInstalled);
         }
 
         [Fact]
