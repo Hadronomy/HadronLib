@@ -13,6 +13,7 @@ namespace HadronLib.Tests.Registry
         {
             var isUnityInstalled = RegistryTools.IsSoftwareInRegistry("Unity", out var keyName, out var displayName);
 
+            //TODO: Implement mocking or any other system that makes this test more reliant
             Assert.False(isUnityInstalled);
         }
 
