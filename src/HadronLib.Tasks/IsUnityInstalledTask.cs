@@ -20,6 +20,7 @@ namespace HadronLib.Tasks
         
         public override bool Execute()
         {
+            // Checks if any software registry matches the specified regex
             var isInstalled = RegistryTools.IsSoftwareInRegistry(
                 new Regex("^Unity.*"),
                 out string keyName, 
