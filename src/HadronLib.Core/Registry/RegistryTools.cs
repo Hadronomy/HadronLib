@@ -70,7 +70,14 @@ namespace HadronLib.Registry
                 out displayName);
         }
 
-        public static IEnumerable<KeyValuePair<string, string>> GetSoftwareRegistryPaths(string searchQuerry)
+        /// <summary>
+        /// Returns an enumeration of <see cref="KeyValuePair{TKey, TValue}"/> the Key being the DisplayName
+        /// and the value being the keyName/keyPath of the found Software Registries with a Display Name that matched the provided
+        /// regex expression
+        /// </summary>
+        /// <param name="regex"></param>
+        /// <returns></returns>
+        public static IEnumerable<KeyValuePair<string, string>> GetSoftwareRegistryPaths(Regex regex)
         {
             string displayName;
             string registryKeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
@@ -81,7 +88,7 @@ namespace HadronLib.Registry
                 foreach (var subKey in key.GetSubKeyNames().Select(keyName => key.OpenSubKey(keyName)))
                 {
                     displayName = subKey.GetValue("DisplayName") as string;
-                    if (displayName != null && displayName.ToLower().Contains(searchQuerry.ToLower()))
+                    if (displayName != null && (regex.Match(displayName)?.Success ?? false))
                     {
                         yield return new KeyValuePair<string, string>(displayName, subKey.ToString());
                     }
@@ -96,7 +103,7 @@ namespace HadronLib.Registry
                 foreach (var subKey in key.GetSubKeyNames().Select(keyName => key.OpenSubKey(keyName)))
                 {
                     displayName = subKey.GetValue("DisplayName") as string;
-                    if (displayName != null && displayName.ToLower().Contains(searchQuerry.ToLower()))
+                    if (displayName != null && (regex.Match(displayName)?.Success ?? false))
                     {
                         yield return new KeyValuePair<string, string>(displayName, subKey.ToString());
                     }
